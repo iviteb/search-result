@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- `dynamic-estimate` filter names to respect delivery method
+
+
 ## [3.141.0] - 2025-10-30
 
 ### Added

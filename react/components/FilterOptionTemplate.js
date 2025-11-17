@@ -7,6 +7,7 @@ import React, {
   useEffect,
   useContext,
 } from 'react'
+import { useShippingOptionState } from 'vtex.shipping-option-components/ShippingOptionContext'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Collapse } from 'react-collapse'
 import classNames from 'classnames'
@@ -103,6 +104,16 @@ const FilterOptionTemplate = ({
   const { getSettings } = useRuntime()
   const intl = useIntl()
 
+  // Shipping option state from hook
+  const { shippingOption } = useShippingOptionState()
+
+  // Estados possíveis:
+  // - undefined → Nada foi selecionado ainda
+  // - 'delivery' → CEP selecionado (delivery)
+  // - 'pickup-in-point' → Loja/pickup selecionada
+  const isDeliverySelected = shippingOption === 'delivery'
+  const isPickupSelected = shippingOption === 'pickup-in-point'
+
   // Function to apply translation to toggle filter facets only
   const applyToggleFilterTranslation = useCallback(
     facets => {
@@ -119,17 +130,37 @@ const FilterOptionTemplate = ({
           filter => filter.key === facet.key && isToggleFilter(filter.key)
         )
 
-        if (belongsToToggleFilter && toggleFiltersValue[facet.name]) {
+        if (belongsToToggleFilter) {
+          // Build translation key based on shipping state (for shipping filters)
+          const getTranslationKey = () => {
+            if (isDeliverySelected) {
+              return `delivery-${facet.name}`
+            }
+
+            if (isPickupSelected) {
+              return `pickup-${facet.name}`
+            }
+
+            // Default fallback (non-shipping filters or nothing selected)
+            return facet.name
+          }
+
+          const translationKey = getTranslationKey()
+          const translationId = toggleFiltersValue[translationKey]
+
+          // Single unified return - only the translation key changes
           return {
             ...facet,
-            name: intl.formatMessage({ id: toggleFiltersValue[facet.name] }),
+            name: translationId
+              ? intl.formatMessage({ id: translationId })
+              : facet.name,
           }
         }
 
         return facet
       })
     },
-    [intl, filters]
+    [intl, filters, isDeliverySelected, isPickupSelected]
   )
 
   const scrollable = useRef()

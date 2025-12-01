@@ -107,10 +107,6 @@ const FilterOptionTemplate = ({
   // Shipping option state from hook
   const { shippingOption } = useShippingOptionState()
 
-  // Estados possíveis:
-  // - undefined → Nada foi selecionado ainda
-  // - 'delivery' → CEP selecionado (delivery)
-  // - 'pickup-in-point' → Loja/pickup selecionada
   const isDeliverySelected = shippingOption === 'delivery'
   const isPickupSelected = shippingOption === 'pickup-in-point'
 

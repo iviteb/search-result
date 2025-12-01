@@ -104,7 +104,6 @@ const FilterOptionTemplate = ({
   const { getSettings } = useRuntime()
   const intl = useIntl()
 
-  // Shipping option state from hook
   const { shippingOption } = useShippingOptionState()
 
   const isDeliverySelected = shippingOption === 'delivery'

@@ -83,6 +83,9 @@ function GalleryRow({
               shouldAddAFAttr ? absoluteProductIndex : undefined
             }
             data-af-product-id={shouldAddAFAttr ? product.productId : undefined}
+            data-af-product-specification={
+              shouldAddAFAttr ? product.specification : undefined
+            }
             key={product.cacheId}
             style={style}
             className={classNames(

@@ -1,0 +1,15 @@
+- name: search-result
+  referenceId: UWERS1CF
+  pipelines:
+    - name: techdocs-v1
+      parameters:
+        entityReference: default/component/search-result
+        indexFile: README.md
+      when:
+        - event: push
+          source: branch
+          regex: master
+          path:
+            - "docs/**"
+            - ".vtex/deployment.yaml"
+            - ".vtex/deployment.json"

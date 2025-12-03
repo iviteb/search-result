@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `dynamic-estimate` filter names to respect delivery method
 
+## [3.141.1] - 2025-12-03
+
+### Added
+
+ - Add data attributes to GalleryLayoutRow: `data-af-product-specification`
 
 ## [3.141.0] - 2025-10-30
 

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+ - Add data attributes to GalleryLayoutRow: `data-af-product-specification`
+
 ## [3.141.0] - 2025-10-30
 
 ### Added

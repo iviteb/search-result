@@ -72,6 +72,7 @@ export interface Product {
   brand?: string
   /** Product's SKU items. */
   items: ProductItem[]
+  specification: string
 }
 
 interface ProductItemReference {

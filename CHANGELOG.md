@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  - Ads SDK integration to fetch sponsored ads.
 
+## [3.141.2] - 2025-12-04
+
+### Changed
+
+- `dynamic-estimate` filter names to respect delivery method
+
 ## [3.141.1] - 2025-12-03
 
 ### Added

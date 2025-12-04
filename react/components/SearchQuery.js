@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { equals } from 'ramda'
 import { useQuery } from 'react-apollo'
 import { useRuntime } from 'vtex.render-runtime'

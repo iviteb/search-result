@@ -6,6 +6,7 @@ import { useAds } from '@vtex/ads-react'
 
 import OldSearchResult from './index'
 import useMergeResults from './hooks/useMergeResults'
+import { removeTreePath } from './utils/removeTreePath'
 
 const noProducts = compose(
   isEmpty,
@@ -43,14 +44,29 @@ const SearchResultLayout = props => {
     hasCustomNotFound &&
     noRedirect(searchQuery)
   ) {
-    return <ExtensionPoint id="search-not-found-layout" {...newProps} />
+    return (
+      <ExtensionPoint
+        id="search-not-found-layout"
+        {...removeTreePath(newProps)}
+      />
+    )
   }
 
   if (hasMobileBlock && isMobile) {
-    return <ExtensionPoint id="search-result-layout.mobile" {...newProps} />
+    return (
+      <ExtensionPoint
+        id="search-result-layout.mobile"
+        {...removeTreePath(newProps)}
+      />
+    )
   }
 
-  return <ExtensionPoint id="search-result-layout.desktop" {...newProps} />
+  return (
+    <ExtensionPoint
+      id="search-result-layout.desktop"
+      {...removeTreePath(newProps)}
+    />
+  )
 }
 
 SearchResultLayout.getSchema = () => {

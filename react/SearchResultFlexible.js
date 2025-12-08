@@ -64,7 +64,6 @@ const SearchResultFlexible = ({
   trackingId,
   thresholdForFacetSearch,
   lazyItemsRemaining,
-  sponsoredCount,
 }) => {
   // This makes infinite scroll unavailable.
   // Infinite scroll was deprecated and we have
@@ -141,7 +140,6 @@ const SearchResultFlexible = ({
       showFacetTitle,
       trackingId,
       thresholdForFacetSearch,
-      sponsoredCount,
     }),
     [
       hiddenFacets,
@@ -151,7 +149,6 @@ const SearchResultFlexible = ({
       showFacetTitle,
       trackingId,
       thresholdForFacetSearch,
-      sponsoredCount,
     ]
   )
 

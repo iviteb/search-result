@@ -2,8 +2,10 @@ import React from 'react'
 import { useChildBlock, ExtensionPoint } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 import { path, compose, equals, pathOr, isEmpty, isNil } from 'ramda'
+import { useAds } from '@vtex/ads-react'
 
 import OldSearchResult from './index'
+import useMergeResults from './hooks/useMergeResults'
 import { removeTreePath } from './utils/removeTreePath'
 
 const noProducts = compose(
@@ -27,13 +29,26 @@ const SearchResultLayout = props => {
   const hasCustomNotFound = !!useChildBlock({ id: 'search-not-found-layout' })
   const { isMobile } = useDevice()
 
+  const sponsoredSearchResult = useAds({
+    placement: 'top_search',
+    type: 'product',
+    amount: props?.sponsoredCount ?? 3,
+    term: searchQuery?.variables?.query ?? '',
+    selectedFacets: searchQuery?.variables?.selectedFacets ?? [],
+  })
+
+  const newProps = useMergeResults({ props, sponsoredSearchResult })
+
   if (
     foundNothing(searchQuery) &&
     hasCustomNotFound &&
     noRedirect(searchQuery)
   ) {
     return (
-      <ExtensionPoint id="search-not-found-layout" {...removeTreePath(props)} />
+      <ExtensionPoint
+        id="search-not-found-layout"
+        {...removeTreePath(newProps)}
+      />
     )
   }
 
@@ -41,7 +56,7 @@ const SearchResultLayout = props => {
     return (
       <ExtensionPoint
         id="search-result-layout.mobile"
-        {...removeTreePath(props)}
+        {...removeTreePath(newProps)}
       />
     )
   }
@@ -49,7 +64,7 @@ const SearchResultLayout = props => {
   return (
     <ExtensionPoint
       id="search-result-layout.desktop"
-      {...removeTreePath(props)}
+      {...removeTreePath(newProps)}
     />
   )
 }
@@ -62,6 +77,14 @@ SearchResultLayout.getSchema = () => {
   return {
     ...schema,
     title: 'admin/editor.search-result-layout.title',
+    properties: {
+      ...schema?.properties,
+      sponsoredCount: {
+        type: 'number',
+        title: 'Sponsored count',
+        default: 3,
+      },
+    },
   }
 }
 

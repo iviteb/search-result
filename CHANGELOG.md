@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [3.143.0] - 2025-12-15
+
 ### Added
 
   - Reapply Ads SDK Integration after revert and fixing issue

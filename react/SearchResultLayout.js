@@ -33,7 +33,7 @@ const SearchResultLayout = props => {
     placement: 'top_search',
     type: 'product',
     amount: props?.sponsoredCount ?? 3,
-    term: searchQuery?.variables?.query ?? '',
+    term: searchQuery?.variables?.fullText,
     selectedFacets: searchQuery?.variables?.selectedFacets ?? [],
   })
 

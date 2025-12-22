@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [3.143.1] - 2025-12-22
+
 ### Fixed
 
 - Fixed Ads SDK to use `fullText` instead of `query` for `term` parameter, enabling sponsored ads in category/brand contexts.

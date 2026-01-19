@@ -13,7 +13,10 @@ import styles from './searchResult.css'
 
 const FetchMore = ({ htmlElementForButton = 'button' }) => {
   const { pagination, searchQuery, maxItemsPerPage, page } = useSearchPage()
-  const products = path(['data', 'productSearch', 'products'], searchQuery)
+  const allProducts = path(['data', 'productSearch', 'products'], searchQuery)
+
+  const products = allProducts?.filter(p => !p?.advertisement) || allProducts
+
   const recordsFiltered = path(
     ['data', 'productSearch', 'recordsFiltered'],
     searchQuery

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- "Load More" button not loading additional organic products when ads are present.
+
 ## [3.143.1] - 2025-12-22
 
 ### Fixed

@@ -14,6 +14,7 @@ const SearchContent = () => {
     path(['data', 'productSearch', 'products'], searchQuery) || []
 
   const redirect = path(['data', 'productSearch', 'redirect'], searchQuery)
+  const loading = path(['loading'], searchQuery)
 
   /* No need to show the spinner if it is loading because
    the LoadingOverlay already takes care of this */
@@ -21,7 +22,7 @@ const SearchContent = () => {
     return null
   }
 
-  if (!products || products.length === 0) {
+  if ((!products || products.length === 0) && !loading) {
     return <ExtensionPoint id="not-found" />
   }
 

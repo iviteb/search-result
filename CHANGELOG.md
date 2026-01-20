@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- SearchContent now checks loading state before displaying not-found page, preventing it from briefly appearing while products with ads are still loading.
+
 ## [3.143.2] - 2026-01-19
 
 ### Fixed

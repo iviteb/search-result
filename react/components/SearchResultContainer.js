@@ -60,7 +60,7 @@ const SearchResultContainer = props => {
     recordsFiltered,
     maxItemsPerPage,
     fetchMore,
-    products,
+    products: products.filter(p => !p?.advertisement) || products,
     queryData,
   })
 

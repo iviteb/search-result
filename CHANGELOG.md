@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Exclude advertisement products from `useFetchMore` products count to ensure correct pagination calculation when sponsored ads are present.
+
 ## [3.143.3] - 2026-01-20
 
 ### Fixed
